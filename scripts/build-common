@@ -1,0 +1,96 @@
+#!/bin/bash
+set -e
+
+: ${BUILD:=$(readlink -f ./build)}
+: ${ARTIFACTS:=$(readlink -f ./assets)}
+: ${CONFIG:=$(readlink -f ./config)}
+: ${DIST:=$(readlink -f ./dist)}
+
+BUILDROOT=buildroot-2014.11.tar.bz2
+DOCKER_FILE=${CONFIG}/.dockerfile
+
+mkdir -p ${BUILD} ${DIST}
+
+busybox_install()
+{
+    apt-get update
+    apt-get install -y build-essential wget libncurses5-dev unzip bc
+
+    cd ${BUILD}
+
+    rm -rf ${BUILDROOT/.tar.bz2//}
+    tar xvjf ${ARTIFACTS}/${BUILDROOT}
+    cd ${BUILDROOT/.tar.bz2//}
+
+    cp $1 .config
+    make oldconfig
+    make
+
+    cp output/images/rootfs.tar $2
+}
+
+write_base()
+{
+    if [ "${BASE_WRITTEN}" = "true" ]; then
+        return
+    fi
+
+    mkdir -p $(dirname ${DOCKER_FILE})
+
+    cat > ${DOCKER_FILE} << "EOF"
+FROM ubuntu:14.04.1
+ENV TERM xterm
+WORKDIR /source
+CMD ["/source/scripts/install"]
+EOF
+
+    BASE_WRITTEN=true
+}
+
+run()
+{
+    local run=true
+    local content
+
+    while [ $# -gt 1 ]; do
+        case $1 in
+            --no-docker)
+                if [ "$DOCKER_BUILD" = "true" ]; then
+                    run=false
+                fi
+                ;;
+            --assets)
+                shift 1
+                content="$content\nCOPY $1 /source/$1"
+                ;;
+        esac
+
+        shift 1
+    done
+
+    if [ "$DOCKER_BUILD" = "true" ]; then
+        write_base
+        if [ -n "$content" ]; then
+            echo -e "$content" >> ${DOCKER_FILE}
+        fi
+        echo -e "\nCOPY $1 /source/$1" >> ${DOCKER_FILE}
+        echo -e "RUN /source/$1" >> ${DOCKER_FILE}
+    elif [ "$run" != "false" ]; then
+        $1
+    fi
+}
+
+finish()
+{
+    if [ "$DOCKER_BUILD" != "true" ]; then
+        return
+    fi
+
+    local cmd="docker build -t ${DOCKER_IMAGE} -f ${DOCKER_FILE} ."
+    echo Running $cmd
+    echo Pwd $(pwd)
+
+    cat ${DOCKER_FILE}
+
+    $cmd
+}

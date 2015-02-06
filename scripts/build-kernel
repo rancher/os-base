@@ -1,0 +1,33 @@
+#!/bin/bash
+
+cd $(dirname $0)/..
+
+source scripts/build-common
+
+apt-get install -y build-essential libncurses5-dev bc
+
+KERNEL=linux-3.18.1.tar.xz
+DIR=${KERNEL/.tar.xz//}
+
+cd ${BUILD}
+
+if [ ! -e ${DIR} ]; then
+    echo Extracting ${ARTIFACTS}/linux-*.tar.xz
+    TEMP=$(mktemp -d -p ${BUILD})
+    trap "rm -rf ${TEMP}" exit
+
+    tar xJf ${ARTIFACTS}/linux-*.tar.xz -C $TEMP
+    mv ${TEMP}/${DIR} ${DIR}
+fi
+
+
+cd ${DIR}
+cp ${CONFIG}/kernel-config .config
+
+make oldconfig
+make -j$(nproc) bzImage
+make -j$(nproc) modules
+
+mkdir -p ${DIST}/kernel
+make INSTALL_MOD_PATH=${DIST}/kernel modules_install firmware_install
+cp arch/x86_64/boot/bzImage ${DIST}/kernel

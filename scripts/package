@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd $(dirname $0)/..
+
+. scripts/build-common
+
+mkdir -p ${DIST}/artifacts
+
+tar cvJf ${DIST}/artifacts/os-base.tar.xz --exclude dist/artifacts dist

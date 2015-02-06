@@ -1,0 +1,45 @@
+#!/bin/bash
+set -e
+set -x
+
+cd $(dirname $0)/..
+
+: ${ARTIFACTS:=$(readlink -f ./assets)}
+
+check()
+{
+    local hash=$1
+    local file=$2
+
+    if [ ! -e "$file" ]; then
+        return 1
+    fi
+
+    CURRENT=$(sha1sum $file | awk '{print $1}')
+
+    [ "$hash" = "$CURRENT" ]
+}
+
+download()
+{
+    mkdir -p ${ARTIFACTS}
+
+    local url=$2
+    local file=${ARTIFACTS}/$(basename $2)
+    local hash=$1
+
+    if ! check $hash $file; then
+        curl $url > $file
+    fi
+
+    if ! check $hash $file; then
+        echo "ERROR: $file does not match checksum $hash, got $CURRENT" 1>&2
+        return 1
+    fi
+}
+
+apt-get update
+apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync
+
+download 0e5f1e08b941cc9b7f030b1b0bf05afcc809e1c6 http://buildroot.uclibc.org/downloads/buildroot-2014.11.tar.bz2
+download 53e6b5e4d29d5df3832cc656e37fd994a4f86d3b https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.1.tar.xz

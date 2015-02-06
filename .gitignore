@@ -1,0 +1,6 @@
+Dockerfile
+assets
+build
+dist
+config/.dockerfile
+*.swp

@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+cd $(dirname $0)/..
+
+if [[ "$#" = 2 && "$1" == "--docker" ]]; then
+    DOCKER_BUILD=true
+    DOCKER_IMAGE=$2
+fi
+
+source scripts/build-common
+
+run --assets ./scripts/build-common \
+    ./scripts/bootstrap
+run --assets ./config/kernel-config \
+    ./scripts/build-kernel
+run --assets ./config/busybox-config \
+    ./scripts/build-busybox
+run --assets ./config/busybox-config-static \
+    ./scripts/build-busybox-static
+run --assets ./scripts/install \
+    ./scripts/package
+
+finish
