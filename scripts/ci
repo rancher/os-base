@@ -3,10 +3,7 @@ set -e
 
 cd $(dirname $0)/..
 
-if [[ "$#" = 2 && "$1" == "--docker" ]]; then
-    DOCKER_BUILD=true
-    DOCKER_IMAGE=$2
-fi
+DOCKER_IMAGE=${DOCKER_IMAGE:=rancher-os-base-build}
 
 source scripts/build-common
 

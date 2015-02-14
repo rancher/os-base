@@ -4,7 +4,7 @@ set -x
 
 cd $(dirname $0)/..
 
-: ${ARTIFACTS:=$(readlink -f ./assets)}
+: ${ARTIFACTS:=$(pwd)/assets}
 
 check()
 {
@@ -29,7 +29,7 @@ download()
     local hash=$1
 
     if ! check $hash $file; then
-        curl $url > $file
+        curl -sL $url > $file
     fi
 
     if ! check $hash $file; then
