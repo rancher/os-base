@@ -42,4 +42,4 @@ apt-get update
 apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync
 
 download 0e5f1e08b941cc9b7f030b1b0bf05afcc809e1c6 http://buildroot.uclibc.org/downloads/buildroot-2014.11.tar.bz2
-download 53e6b5e4d29d5df3832cc656e37fd994a4f86d3b https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.1.tar.xz
+download 8f8dc74ef727ab3e7dbc161de2ce643452d30f78 https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.6.tar.xz
