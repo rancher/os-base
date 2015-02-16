@@ -5,4 +5,4 @@ cd $(dirname $0)/..
 
 . scripts/build-common
 
-busybox_install ${CONFIG}/busybox-config ${DIST}/rootfs.tar
+busybox_install ${CONFIG}/buildroot-config ${DIST}/rootfs.tar

@@ -11,9 +11,10 @@ run --assets ./scripts/build-common \
     ./scripts/bootstrap
 run --assets ./config/kernel-config \
     ./scripts/build-kernel
-run --assets ./config/busybox-config \
+run --assets ./config/buildroot-config \
     ./scripts/build-busybox
-run --assets ./config/busybox-config-static \
+run --assets ./config/buildroot-config-static \
+    --assets ./config/busybox-modprobe-only.config \
     ./scripts/build-busybox-static
 run --assets ./scripts/install \
     ./scripts/package

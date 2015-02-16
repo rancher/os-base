@@ -279,7 +279,7 @@ BR2_ROOTFS_POST_IMAGE_SCRIPT=""
 # Target packages
 #
 BR2_PACKAGE_BUSYBOX=y
-BR2_PACKAGE_BUSYBOX_CONFIG="package/busybox/busybox.config"
+BR2_PACKAGE_BUSYBOX_CONFIG="package/busybox/busybox-modprobe-only.config"
 # BR2_PACKAGE_BUSYBOX_SHOW_OTHERS is not set
 # BR2_PACKAGE_BUSYBOX_WATCHDOG is not set
 
