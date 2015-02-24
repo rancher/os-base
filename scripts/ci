@@ -12,6 +12,7 @@ run --assets ./scripts/build-common \
 run --assets ./config/kernel-config \
     ./scripts/build-kernel
 run --assets ./config/buildroot-config \
+    --assets ./config/busybox-dynamic.config \
     ./scripts/build-busybox
 run --assets ./config/buildroot-config-static \
     --assets ./config/busybox-modprobe-only.config \
