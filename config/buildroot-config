@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2014.11-gac66b22-dirty Configuration
+# Buildroot 2014.11-gcb66a33 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 
@@ -68,7 +68,7 @@ BR2_BZCAT="bzcat"
 BR2_XZCAT="xzcat"
 BR2_TAR_OPTIONS=""
 BR2_DEFCONFIG="$(CONFIG_DIR)/defconfig"
-BR2_DL_DIR="$(TOPDIR)/dl"
+BR2_DL_DIR="$(HOME)/.dl"
 BR2_HOST_DIR="$(BASE_DIR)/host"
 
 #
@@ -1368,7 +1368,7 @@ BR2_PACKAGE_NCURSES=y
 # BR2_PACKAGE_NCURSES_TARGET_PROGS is not set
 # BR2_PACKAGE_NEWT is not set
 # BR2_PACKAGE_PCRE is not set
-# BR2_PACKAGE_POPT is not set
+BR2_PACKAGE_POPT=y
 BR2_PACKAGE_READLINE=y
 # BR2_PACKAGE_SLANG is not set
 
@@ -1469,7 +1469,10 @@ BR2_PACKAGE_READLINE=y
 # ctorrent needs a toolchain w/ C++
 #
 # BR2_PACKAGE_CUPS is not set
-# BR2_PACKAGE_DHCP is not set
+BR2_PACKAGE_DHCP=y
+# BR2_PACKAGE_DHCP_SERVER is not set
+# BR2_PACKAGE_DHCP_RELAY is not set
+BR2_PACKAGE_DHCP_CLIENT=y
 # BR2_PACKAGE_DHCPCD is not set
 # BR2_PACKAGE_DHCPDUMP is not set
 # BR2_PACKAGE_DNSMASQ is not set
@@ -1623,9 +1626,9 @@ BR2_PACKAGE_OPENSSH=y
 #
 # radvd needs a toolchain w/ IPv6
 #
-BR2_PACKAGE_RPCBIND=y
+# BR2_PACKAGE_RPCBIND is not set
 # BR2_PACKAGE_RSH_REDONE is not set
-# BR2_PACKAGE_RSYNC is not set
+BR2_PACKAGE_RSYNC=y
 
 #
 # rtorrent needs a toolchain w/ C++, threads, wchar
@@ -1741,7 +1744,7 @@ BR2_PACKAGE_BASH=y
 # BR2_PACKAGE_GNUPG2 is not set
 # BR2_PACKAGE_INOTIFY_TOOLS is not set
 # BR2_PACKAGE_LOCKFILE_PROGS is not set
-# BR2_PACKAGE_LOGROTATE is not set
+BR2_PACKAGE_LOGROTATE=y
 # BR2_PACKAGE_LOGSURFER is not set
 # BR2_PACKAGE_PINENTRY is not set
 # BR2_PACKAGE_SCREEN is not set

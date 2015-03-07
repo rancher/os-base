@@ -1,1 +1,1 @@
--e RUN_EXEC=true
+-e RUN_EXEC=true -e HOME=/source --privileged

@@ -68,7 +68,7 @@ BR2_BZCAT="bzcat"
 BR2_XZCAT="xzcat"
 BR2_TAR_OPTIONS=""
 BR2_DEFCONFIG="$(CONFIG_DIR)/defconfig"
-BR2_DL_DIR="$(TOPDIR)/dl"
+BR2_DL_DIR="$(HOME)/.dl"
 BR2_HOST_DIR="$(BASE_DIR)/host"
 
 #
@@ -80,7 +80,7 @@ BR2_KERNEL_MIRROR="https://www.kernel.org/pub"
 BR2_GNU_MIRROR="http://ftp.gnu.org/pub/gnu"
 BR2_LUAROCKS_MIRROR="http://rocks.moonscript.org"
 BR2_CPAN_MIRROR="http://cpan.metacpan.org"
-BR2_JLEVEL=8
+BR2_JLEVEL=0
 BR2_CCACHE=y
 BR2_CCACHE_DIR="$(HOME)/.buildroot-ccache"
 BR2_CCACHE_INITIAL_SETUP=""

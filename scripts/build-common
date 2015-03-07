@@ -6,7 +6,6 @@ set -e
 : ${CONFIG:=$(pwd)/config}
 : ${DIST:=$(pwd)/dist}
 
-BUILDROOT=buildroot-2014.11.tar.bz2
 DOCKER_FILE=${CONFIG}/.dockerfile
 
 mkdir -p ${BUILD} ${DIST}
@@ -27,9 +26,18 @@ busybox_install()
 
     cd ${BUILD}
 
-    rm -rf ${BUILDROOT/.tar.bz2//}
-    tar xvjf ${ARTIFACTS}/${BUILDROOT}
-    cd ${BUILDROOT/.tar.bz2//}
+    local buildroot=$(ls -1 ${ARTIFACTS}/buildroot-*.tar.bz2)
+
+    if [ ! -e "${buildroot}" ]; then
+        echo "Failed to find busybox archive" 1>&2
+        return 1
+    else
+        buildroot=$(basename $buildroot)
+    fi
+
+    rm -rf ${buildroot/.tar.bz2//}
+    tar xvjf ${ARTIFACTS}/${buildroot}
+    cd ${buildroot/.tar.bz2//}
 
     cp $conf .config
     if [ -n "$bbconf" ]; then
