@@ -29,7 +29,7 @@ busybox_install()
     local buildroot=$(ls -1 ${ARTIFACTS}/buildroot-*.tar.bz2)
 
     if [ ! -e "${buildroot}" ]; then
-        echo "Failed to find busybox archive" 1>&2
+        echo "Failed to find busybox archive, found : ${buildroot}" 1>&2
         return 1
     else
         buildroot=$(basename $buildroot)
@@ -102,6 +102,9 @@ run()
 
 finish()
 {
+    if [ "$RUN_EXEC" = true ]; then
+        return 0
+    fi
     local cmd="docker build -t ${DOCKER_IMAGE} -f ${DOCKER_FILE} ."
     echo Running $cmd
     echo Pwd $(pwd)

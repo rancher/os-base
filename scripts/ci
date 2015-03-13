@@ -9,6 +9,7 @@ source scripts/build-common
 
 run --assets ./scripts/build-common \
     ./scripts/bootstrap
+run ./scripts/download
 run --assets ./config/kernel-config \
     ./scripts/build-kernel
 run --assets ./config/buildroot-config \

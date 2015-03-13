@@ -4,8 +4,11 @@ cd $(dirname $0)/..
 
 source scripts/build-common
 
-apt-get install -y build-essential libncurses5-dev bc
+apt-get install -y build-essential libncurses5-dev bc ccache
 
+export CCACHE_DIR="${HOME}/.kernel-ccache"
+export CC="ccache gcc"
+export PATH="/usr/lib/ccache:$PATH"
 KERNEL="$(cd ${ARTIFACTS}; echo linux-*.tar.xz)"
 DIR=${KERNEL/.tar.xz//}
 
@@ -25,9 +28,7 @@ cd ${DIR}
 cp ${CONFIG}/kernel-config .config
 
 make oldconfig
-make -j$(nproc) bzImage
-make -j$(nproc) modules
+make -j$(nproc) tar-pkg
 
 mkdir -p ${DIST}/kernel
-make INSTALL_MOD_PATH=${DIST}/kernel modules_install firmware_install
-cp arch/x86_64/boot/bzImage ${DIST}/kernel
+mv linux*.tar ${DIST}/kernel
