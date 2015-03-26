@@ -27,6 +27,11 @@ cd ../os
 sed -i -e 's/^\(download.*os-base.*\)/#\1/' scripts/download
 ./build.sh
 ```
+## Contact
+For bugs, questions, comments, corrections, suggestions, etc., open an issue in
+ [rancherio/os](//github.com/rancherio/os/issues) with a title starting with `[os-base] `.
+
+Or just [click here](//github.com/rancherio/os/issues/new?title=%5Bos-base%5D%20) to create a new issue.
 
 
 # License
