@@ -9,17 +9,17 @@ apt-get install -y build-essential libncurses5-dev bc ccache
 export CCACHE_DIR="${HOME}/.kernel-ccache"
 export CC="ccache gcc"
 export PATH="/usr/lib/ccache:$PATH"
-KERNEL="$(cd ${ARTIFACTS}; echo linux-*.tar.xz)"
-DIR=${KERNEL/.tar.xz//}
+KERNEL="$(cd ${ARTIFACTS}; echo linux-*.tar.*)"
+DIR=${KERNEL/.tar.*//}
 
 cd ${BUILD}
 
 if [ ! -e ${DIR} ]; then
-    echo Extracting ${ARTIFACTS}/linux-*.tar.xz
+    echo Extracting ${ARTIFACTS}/linux-*.tar.*
     TEMP=$(mktemp -d -p ${BUILD})
     trap "rm -rf ${TEMP}" exit
 
-    tar xJf ${ARTIFACTS}/linux-*.tar.xz -C $TEMP
+    tar xf ${ARTIFACTS}/linux-*.tar.* -C $TEMP
     mv ${TEMP}/${DIR} ${DIR}
 fi
 
@@ -32,3 +32,4 @@ make -j$(nproc) tar-pkg
 
 mkdir -p ${DIST}/kernel
 mv linux*.tar ${DIST}/kernel
+make headers_install INSTALL_HDR_PATH=${DIST}/kernel/headers

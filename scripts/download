@@ -39,4 +39,4 @@ download()
 }
 
 download f7037e6dde3317e20fb607710e2176ebe0b871a6 http://buildroot.uclibc.org/downloads/buildroot-2015.02.tar.bz2
-download 10a25ca5b6d93db78adc9caf13f7ad7cb4b79c61 https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.2.tar.xz
+download a3c4759dafcb6f1b65b2ff41a67ab54c72629e80 https://github.com/rancherio/linux/archive/Ubuntu-3.19.0-10.10.tar.gz
