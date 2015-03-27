@@ -9,17 +9,17 @@ apt-get install -y build-essential libncurses5-dev bc ccache
 export CCACHE_DIR="${HOME}/.kernel-ccache"
 export CC="ccache gcc"
 export PATH="/usr/lib/ccache:$PATH"
-KERNEL="$(cd ${ARTIFACTS}; echo linux-*.tar.*)"
-DIR=${KERNEL/.tar.*//}
+KERNEL="$(cd ${ARTIFACTS}; echo Ubuntu-*.tar.*)"
+DIR=linux-${KERNEL/.tar.*//}
 
 cd ${BUILD}
 
 if [ ! -e ${DIR} ]; then
-    echo Extracting ${ARTIFACTS}/linux-*.tar.*
+    echo Extracting ${ARTIFACTS}/Ubuntu-*.tar.*
     TEMP=$(mktemp -d -p ${BUILD})
     trap "rm -rf ${TEMP}" exit
 
-    tar xf ${ARTIFACTS}/linux-*.tar.* -C $TEMP
+    tar xf ${ARTIFACTS}/Ubuntu-*.tar.* -C $TEMP
     mv ${TEMP}/${DIR} ${DIR}
 fi
 
