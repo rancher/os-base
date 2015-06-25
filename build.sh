@@ -1,9 +1,20 @@
 #!/bin/bash
+set -e
 
 cd $(dirname $0)
 
 export DOCKER_IMAGE=rancher-os-base-build
 
 ./scripts/ci
-mkdir -p dist
-docker run -it -v $(pwd)/dist:/source/target $DOCKER_IMAGE
+
+rm -rf dist
+
+echo "Build complete. Copying artifacts..."
+DIST_CONTAINER=$(docker create ${DOCKER_IMAGE})
+cleanup() {
+    docker rm -v ${DIST_CONTAINER}
+}
+trap cleanup EXIT
+docker cp ${DIST_CONTAINER}:/source/dist/artifacts dist
+
+ls -l dist/artifacts
