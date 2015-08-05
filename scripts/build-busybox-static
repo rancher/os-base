@@ -1,8 +1,0 @@
-#!/bin/bash
-set -e
-
-cd $(dirname $0)/..
-
-. scripts/build-common
-
-busybox_install ${CONFIG}/buildroot-config-static ${CONFIG}/busybox-modprobe-only.config ${DIST}/rootfs-static.tar
