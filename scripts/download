@@ -38,4 +38,4 @@ download()
     fi
 }
 
-download d4952b242952d579841d628cf178c69b78141ddc http://buildroot.uclibc.org/downloads/buildroot-2015.08-rc1.tar.bz2
+download 8efabafe68d21616c7f2ac9fdad8427fc94a015d http://buildroot.uclibc.org/downloads/buildroot-2015.05.tar.bz2
