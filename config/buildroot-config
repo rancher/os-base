@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2015.05-g80f2257-dirty Configuration
+# Buildroot 2015.05-g39f3b19 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 
@@ -970,8 +970,8 @@ BR2_PACKAGE_BOTAN_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LIBSSH2 is not set
 # BR2_PACKAGE_NETTLE is not set
 BR2_PACKAGE_OPENSSL=y
-# BR2_PACKAGE_OPENSSL_BIN is not set
-# BR2_PACKAGE_OPENSSL_ENGINES is not set
+BR2_PACKAGE_OPENSSL_BIN=y
+BR2_PACKAGE_OPENSSL_ENGINES=y
 # BR2_PACKAGE_POLARSSL is not set
 
 #
