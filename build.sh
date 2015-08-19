@@ -15,6 +15,7 @@ cleanup() {
     docker rm -v ${DIST_CONTAINER}
 }
 trap cleanup EXIT
-docker cp ${DIST_CONTAINER}:/source/dist/artifacts dist
+mkdir -p dist
+docker cp ${DIST_CONTAINER}:/source/dist/artifacts dist/
 
 ls -l dist/artifacts
