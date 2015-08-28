@@ -18,4 +18,4 @@ trap cleanup EXIT
 mkdir -p dist
 docker cp ${DIST_CONTAINER}:/source/dist/artifacts dist/
 
-ls -l dist/artifacts
+ls -lh dist/artifacts

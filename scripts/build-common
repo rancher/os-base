@@ -46,7 +46,7 @@ busybox_install()
     make oldconfig
     make
 
-    cp output/images/rootfs.tar $target
+    cp output/images/* $target
 }
 
 write_base()
