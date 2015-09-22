@@ -12,6 +12,7 @@ run --assets ./scripts/build-common \
 run ./scripts/download
 run --assets ./config/buildroot-config \
     --assets ./config/busybox-dynamic.config \
+    --assets ./scripts/fix-up-image.sh \
     ./scripts/build-busybox
 run ./scripts/package
 
