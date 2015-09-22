@@ -58,8 +58,9 @@ write_base()
     mkdir -p $(dirname ${DOCKER_FILE})
 
     cat > ${DOCKER_FILE} << EOF
-FROM ${DOCKER_BASE:=ubuntu:14.04.2}
-ENV TERM xterm
+FROM ${DOCKER_BASE:=ubuntu:14.04.3}
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
 WORKDIR /source
 EOF
 
