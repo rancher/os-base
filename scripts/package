@@ -2,8 +2,8 @@
 
 cd $(dirname $0)/..
 
-. scripts/build-common
+: ${DIST:=$(pwd)/dist}
 
 mkdir -p ${DIST}/artifacts
 
-tar cvJf ${DIST}/artifacts/os-base.tar.xz --exclude dist/artifacts dist
+tar cvJf ${DIST}/artifacts/os-base_${1}.tar.xz ${DIST}/$1
