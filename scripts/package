@@ -1,9 +1,0 @@
-#!/bin/bash
-
-cd $(dirname $0)/..
-
-: ${DIST:=$(pwd)/dist}
-
-mkdir -p ${DIST}/artifacts
-
-tar cvJf ${DIST}/artifacts/os-base_${1}.tar.xz ${DIST}/$1

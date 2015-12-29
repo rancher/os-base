@@ -12,13 +12,6 @@ busybox_install()
     local bbconf=$2
     local target=$3
 
-    if [ "$#" = "2" ]; then
-        target=$2
-        bbconf=
-    fi
-
-    mkdir -p ${target}
-
     mkdir -p ${BUILD}
     cd ${BUILD}
 
@@ -32,7 +25,7 @@ busybox_install()
     fi
 
     rm -rf ${buildroot/.tar.bz2//}
-    tar xvjf ${ARTIFACTS}/${buildroot}
+    tar xjf ${ARTIFACTS}/${buildroot}
     cd ${buildroot/.tar.bz2//}
 
     cp $conf .config
@@ -42,7 +35,7 @@ busybox_install()
     make oldconfig
     make
 
-    cp output/images/* $target
+    tar cvJf $target -C output/images .
 }
 
 busybox_install "$1" "$2" "$3"

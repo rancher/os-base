@@ -5,11 +5,10 @@ cd $(dirname $0)/..
 
 : ${CONFIG:=$(pwd)/config}
 : ${DIST:=$(pwd)/dist}
-: ${ARCH:='arm x86_64'}
+: ${ARCH:='amd64 arm'}
 
-./scripts/download
+mkdir -p ${DIST}/artifacts
 
 for arch in $ARCH; do
-  ./scripts/build-busybox ${CONFIG}/${arch}/buildroot-config ${CONFIG}/busybox-dynamic.config ${DIST}/${arch}
-  ./scripts/package ${arch}
+  ./scripts/build-busybox ${CONFIG}/${arch}/buildroot-config ${CONFIG}/busybox-dynamic.config ${DIST}/artifacts/os-base_${arch}.tar.xz
 done

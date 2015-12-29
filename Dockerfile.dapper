@@ -9,4 +9,8 @@ ENV LANG en_US.UTF-8
 ENV DAPPER_SOURCE /source
 ENV DAPPER_OUTPUT ./dist
 ENV SHELL /bin/bash
+
+WORKDIR ${DAPPER_SOURCE}/assets
+RUN curl -OL https://buildroot.org/downloads/buildroot-2015.11.1.tar.bz2
+
 WORKDIR ${DAPPER_SOURCE}
