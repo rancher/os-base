@@ -3,17 +3,12 @@ set -e
 
 cd $(dirname $0)/..
 
-DOCKER_IMAGE=${DOCKER_IMAGE:=rancher-os-base-build}
+: ${CONFIG:=$(pwd)/config}
+: ${DIST:=$(pwd)/dist}
+: ${ARCH:='amd64 arm'}
 
-source scripts/build-common
+mkdir -p ${DIST}/artifacts
 
-run --assets ./scripts/build-common \
-    ./scripts/bootstrap
-run ./scripts/download
-run --assets ./config/buildroot-config \
-    --assets ./config/busybox-dynamic.config \
-    --assets ./scripts/fix-up-image.sh \
-    ./scripts/build-busybox
-run ./scripts/package
-
-finish
+for arch in $ARCH; do
+  ./scripts/build-busybox ${CONFIG}/${arch}/buildroot-config ${CONFIG}/busybox-dynamic.config ${DIST}/artifacts/os-base_${arch}.tar.xz
+done
