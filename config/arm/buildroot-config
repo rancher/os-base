@@ -422,7 +422,6 @@ BR2_PACKAGE_GOOGLE_BREAKPAD_ARCH_SUPPORTS=y
 #
 # BR2_PACKAGE_IOZONE is not set
 BR2_PACKAGE_KEXEC=y
-# BR2_PACKAGE_KEXEC_ZLIB is not set
 
 #
 # ktap needs a Linux kernel to be built
