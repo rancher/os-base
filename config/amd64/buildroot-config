@@ -401,7 +401,7 @@ BR2_PACKAGE_GOOGLE_BREAKPAD_ARCH_SUPPORTS=y
 # google-breakpad requires an (e)glibc toolchain w/ C++ enabled
 #
 # BR2_PACKAGE_IOZONE is not set
-BR2_PACKAGE_KEXEC=y
+# BR2_PACKAGE_KEXEC is not set
 
 #
 # ktap needs a Linux kernel to be built
