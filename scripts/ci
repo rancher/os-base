@@ -5,7 +5,7 @@ cd $(dirname $0)/..
 
 : ${CONFIG:=$(pwd)/config}
 : ${DIST:=$(pwd)/dist}
-: ${ARCH:='amd64 arm'}
+: ${ARCH:='amd64 arm arm64'}
 
 mkdir -p ${DIST}/artifacts
 
