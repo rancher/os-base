@@ -1,7 +1,7 @@
-FROM ubuntu:15.10
+FROM ubuntu:16.04
 
 RUN apt-get update && \
-    apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache vim less cpio
+    apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache vim less cpio texinfo
 
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -9,8 +9,8 @@ ENV LANG en_US.UTF-8
 ENV DAPPER_SOURCE /source
 ENV DAPPER_OUTPUT ./dist
 ENV SHELL /bin/bash
-
-WORKDIR ${DAPPER_SOURCE}/assets
-RUN wget https://buildroot.org/downloads/buildroot-2016.02.tar.bz2
-
+ENV ARTIFACTS /usr/src
 WORKDIR ${DAPPER_SOURCE}
+
+RUN cd ${ARTIFACTS} && \
+    wget https://buildroot.org/downloads/buildroot-2016.05.tar.bz2
