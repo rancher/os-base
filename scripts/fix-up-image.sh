@@ -41,7 +41,6 @@ rm -rfv \
     usr/sbin/fsfreeze \
     usr/sbin/ldattach \
     usr/sbin/mkfs \
-    usr/sbin/partprobe \
     usr/sbin/rtcwake \
     usr/sbin/swaplabel \
     usr/sbin/wipefs \
