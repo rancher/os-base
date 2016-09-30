@@ -14,4 +14,4 @@ ENV ARTIFACTS /usr/src
 WORKDIR ${DAPPER_SOURCE}
 
 RUN cd ${ARTIFACTS} && \
-    wget https://buildroot.org/downloads/buildroot-2016.05.tar.bz2
+    wget https://github.com/rancher/buildroot/archive/buildroot-2016.08.1-1.tar.gz
