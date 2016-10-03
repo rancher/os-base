@@ -25,6 +25,7 @@ busybox_install()
     fi
 
     DIR=${buildroot/.tar.*//}
+    rm -rf ${DIR}
     mkdir -p ${DIR}
     tar xf ${ARTIFACTS}/${buildroot} -C ${DIR} --strip-components=1
     cd ${DIR}

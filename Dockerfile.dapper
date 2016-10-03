@@ -15,3 +15,6 @@ WORKDIR ${DAPPER_SOURCE}
 
 RUN cd ${ARTIFACTS} && \
     wget https://github.com/rancher/buildroot/archive/buildroot-2016.08.1-1.tar.gz
+
+ENTRYPOINT ["./scripts/entry"]
+CMD ["ci"]
