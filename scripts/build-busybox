@@ -15,7 +15,7 @@ busybox_install()
     mkdir -p ${BUILD}
     cd ${BUILD}
 
-    local buildroot=$(ls -1 ${ARTIFACTS}/buildroot-*.tar.bz2)
+    local buildroot=$(ls -1 ${ARTIFACTS}/buildroot-*.tar.*)
 
     if [ ! -e "${buildroot}" ]; then
         echo "Failed to find busybox archive, found : ${buildroot}" 1>&2
@@ -24,9 +24,10 @@ busybox_install()
         buildroot=$(basename $buildroot)
     fi
 
-    rm -rf ${buildroot/.tar.bz2//}
-    tar xjf ${ARTIFACTS}/${buildroot}
-    cd ${buildroot/.tar.bz2//}
+    DIR=${buildroot/.tar.*//}
+    mkdir -p ${DIR}
+    tar xf ${ARTIFACTS}/${buildroot} -C ${DIR} --strip-components=1
+    cd ${DIR}
 
     cp $conf .config
     if [ -n "$bbconf" ]; then
