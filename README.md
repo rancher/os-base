@@ -24,8 +24,9 @@ cp dist/artifacts/os-base.tar.xz ../os/assets
 
 # Build RancherOS
 cd ../os
+# TODO: argh - this has moved to the Dockerfile.dapper
 sed -i -e 's/^\(download.*os-base.*\)/#\1/' scripts/download
-./build.sh
+make
 ```
 ## Contact
 For bugs, questions, comments, corrections, suggestions, etc., open an issue in
