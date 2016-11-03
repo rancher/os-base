@@ -33,6 +33,7 @@ busybox_install()
     if [ -n "$bbconf" ]; then
         cp $bbconf package/busybox/
     fi
+    export HOME=${BUILD}
     make oldconfig
     make
 
