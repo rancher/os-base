@@ -16,5 +16,12 @@ WORKDIR ${DAPPER_SOURCE}
 RUN cd ${ARTIFACTS} && \
     wget https://github.com/rancher/buildroot/archive/buildroot-2016.08.1-1.tar.gz
 
+ARG DAPPER_HOST_ARCH=amd64
+ARG HOST_ARCH=${DAPPER_HOST_ARCH}
+ARG ARCH=${HOST_ARCH}
+ENV ARCH=${ARCH} \
+    HOST_ARCH=${HOST_ARCH}
+ENV ARCH=${ARCH}
+
 ENTRYPOINT ["./scripts/entry"]
 CMD ["ci"]
