@@ -38,6 +38,10 @@ busybox_install()
     make
 
     tar cvJf $target -C output/images .
+    cp .config ${target}.config
+    if [ -n "$bbconf" ]; then
+        cp package/busybox/$(basename $bbconf) ${target}.$(basename $bbconf)
+    fi
 }
 
 busybox_install "$1" "$2" "$3"
