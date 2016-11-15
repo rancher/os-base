@@ -7,8 +7,11 @@ cd $(dirname $0)/..
 : ${DIST:=$(pwd)/dist}
 : ${ARCH:='amd64 arm arm64'}
 
+echo "about to build ${ARCH}"
+
 mkdir -p ${DIST}/artifacts
 
 for arch in $ARCH; do
+  echo "++++++++ BUILDING ${arch}"
   ./scripts/build-busybox ${CONFIG}/${arch}/buildroot-config ${CONFIG}/busybox-dynamic.config ${DIST}/artifacts/os-base_${arch}.tar.xz
 done
