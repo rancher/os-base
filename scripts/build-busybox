@@ -8,14 +8,17 @@ cd $(dirname $0)/..
 
 busybox_install()
 {
-    local conf=$1
-    local bbconf=$2
-    local target=$3
+    local build=$1
+    local conf=$2
+    local bbconf=$3
+    local target=$4
+    echo "SO $build, $conf, $bbconf, $target"
+    echo "SO $target"
 
     mkdir -p ${BUILD}
     cd ${BUILD}
 
-    local buildroot=$(ls -1 ${ARTIFACTS}/buildroot-*.tar.*)
+    local buildroot=$(ls -1 ${ARTIFACTS}/${TARBALL})
 
     if [ ! -e "${buildroot}" ]; then
         echo "Failed to find busybox archive, found : ${buildroot}" 1>&2
@@ -35,13 +38,15 @@ busybox_install()
     fi
     export HOME=${BUILD}
     make oldconfig
-    make
-
-    tar cvJf $target -C output/images .
     cp .config ${target}.config
     if [ -n "$bbconf" ]; then
         cp package/busybox/$(basename $bbconf) ${target}.$(basename $bbconf)
     fi
+
+    if [ "$build" == "build" ]; then
+        make
+        tar cvJf $target -C output/images .
+    fi
 }
 
-busybox_install "$1" "$2" "$3"
+busybox_install "$1" "$2" "$3" "$4"

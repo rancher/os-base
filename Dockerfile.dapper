@@ -13,8 +13,9 @@ ENV SHELL /bin/bash
 ENV ARTIFACTS /usr/src
 WORKDIR ${DAPPER_SOURCE}
 
+ENV TARBALL 2016.11.1-1.tar.gz
 RUN cd ${ARTIFACTS} && \
-    wget https://github.com/rancher/buildroot/archive/2016.11.1-1.tar.gz
+    wget https://github.com/rancher/buildroot/archive/$TARBALL
 
 ARG DAPPER_HOST_ARCH=amd64
 ARG HOST_ARCH=${DAPPER_HOST_ARCH}
