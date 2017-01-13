@@ -13,5 +13,5 @@ mkdir -p ${DIST}/artifacts
 
 for arch in $ARCH; do
   echo "++++++++ BUILDING ${arch}"
-  ./scripts/build-busybox ${CONFIG}/${arch}/buildroot-config ${CONFIG}/busybox-dynamic.config ${DIST}/artifacts/os-base_${arch}.tar.xz
+  ./scripts/build-busybox "build" ${CONFIG}/${arch}/buildroot-config ${CONFIG}/busybox-dynamic.config ${DIST}/artifacts/os-base_${arch}.tar.xz
 done

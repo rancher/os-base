@@ -1,4 +1,4 @@
-TARGETS := $(shell ls scripts | grep -vE 'clean|run|help')
+TARGETS := $(shell ls scripts | grep -vE 'clean|run|help|config')
 
 .dapper:
 	@echo Downloading dapper
@@ -9,6 +9,11 @@ TARGETS := $(shell ls scripts | grep -vE 'clean|run|help')
 
 $(TARGETS): .dapper
 	./.dapper $@
+
+config:
+	./.dapper config
+	cp dist/artifacts/os-base_amd64.tar.xz.busybox-dynamic.config config/busybox-dynamic.config
+	cp dist/artifacts/os-base_amd64.tar.xz.config config/amd64/buildroot-config
 
 shell-bind: .dapper
 	./.dapper -m bind -s

@@ -1,0 +1,17 @@
+#!/bin/bash
+set -ex
+
+cd $(dirname $0)/..
+
+: ${CONFIG:=$(pwd)/config}
+: ${DIST:=$(pwd)/dist}
+: ${ARCH:='amd64 arm arm64'}
+
+echo "about to update config ${ARCH}"
+
+mkdir -p ${DIST}/artifacts
+
+for arch in $ARCH; do
+  echo "++++++++ updating config ${arch}"
+  ./scripts/build-busybox "config" ${CONFIG}/${arch}/buildroot-config ${CONFIG}/busybox-dynamic.config ${DIST}/artifacts/os-base_${arch}.tar.xz
+done
