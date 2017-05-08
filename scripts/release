@@ -4,15 +4,15 @@ cd $(dirname $0)/..
 : ${ARTIFACTS:=$(pwd)/dist/artifacts}
 
 ./scripts/ci 2>&1 | tee build.log
-mv build.log ${ARTIFACTS}
+mv build.log dist/
 
 echo
 echo "to publish release to github, run dist/publish.sh"
 
 echo "#!/bin/sh"> dist/publish.sh
-echo "github-release release --user rancher --repo os-kernel --tag v${VERSION} --pre-release" >> dist/publish.sh
+echo "github-release release --user rancher --repo os-base --tag v${VERSION} --pre-release" >> dist/publish.sh
 for file in $(ls ${ARTIFACTS}) ; do
-	echo "github-release upload  --user rancher --repo os-base --tag v${VERSION} --file ${ARTIFACTS}/${file} --name $file" >> dist/publish.sh
+	echo "github-release upload  --user rancher --repo os-base --tag v${VERSION} --file dist/artifacts/${file} --name $file" >> dist/publish.sh
 done
 
 chmod 755 dist/publish.sh
