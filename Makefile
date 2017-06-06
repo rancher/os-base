@@ -23,4 +23,4 @@ help:
 
 .DEFAULT_GOAL := ci
 
-.PHONY: $(TARGETS)
+.PHONY: $(TARGETS) config
