@@ -8,7 +8,7 @@ TARGETS := $(shell ls scripts | grep -vE 'clean|run|help|config')
 	@mv .dapper.tmp .dapper
 
 $(TARGETS): .dapper
-	./.dapper $@
+	./.dapper $@ 2>&1 | tee $@.log
 
 config:
 	./.dapper config
@@ -23,4 +23,4 @@ help:
 
 .DEFAULT_GOAL := ci
 
-.PHONY: $(TARGETS)
+.PHONY: $(TARGETS) config
