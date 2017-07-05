@@ -11,8 +11,9 @@ echo "to publish release to github, run dist/publish.sh"
 
 echo "#!/bin/sh"> dist/publish.sh
 echo "github-release release --user rancher --repo os-base --tag v${VERSION} --pre-release" >> dist/publish.sh
-for f in $(ls ${ARTIFACTS}) ; do
-	echo "github-release upload  --user rancher --repo os-base --tag v${VERSION} --file ${ARTIFACTS}/${f} --name ${f}" >> dist/publish.sh
-done
+echo "for f in \$(ls ./dist/artifacts) ; do" >> dist/publish.sh
+echo "  github-release upload  --user rancher --repo os-base --tag v${VERSION} --file ./dist/artifacts/\${f} --name \${f}" >> dist/publish.sh
+echo "done" >> dist/publish.sh
+echo "github-release upload  --user rancher --repo os-base --tag v${VERSION} --file release.log --name release.log" >> dist/publish.sh
 
 chmod 755 dist/publish.sh
