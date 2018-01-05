@@ -7,3 +7,4 @@
 /.dl
 /Dockerfile
 *.swp
+/.dapper
