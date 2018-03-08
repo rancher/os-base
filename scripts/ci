@@ -5,7 +5,7 @@ cd $(dirname $0)/..
 
 : ${CONFIG:=$(pwd)/config}
 : ${DIST:=$(pwd)/dist}
-: ${ARCH:='amd64 arm arm64'}
+: ${ARCH:='amd64 arm64'}
 
 echo "about to build ${ARCH}"
 

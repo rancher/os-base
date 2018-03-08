@@ -1,5 +1,5 @@
 FROM rancher/os-ubuntuconsole-base
-# FROM amd64=ubuntu:16.04 arm64=aarch64/ubuntu:16.04 arm=armhf/ubuntu:16.04
+# FROM amd64=ubuntu:16.04 arm64=aarch64/ubuntu:16.04
 
 RUN apt-get update && \
     apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache vim less cpio texinfo locales
