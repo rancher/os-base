@@ -4,7 +4,7 @@ cd $(dirname $0)/..
 : ${ARTIFACTS:=$(pwd)/dist/artifacts}
 
 ./scripts/ci 2>&1 | tee build.log
-mv build.log dist/
+mv build.log dist/build_${ARCH}.log
 
 #COMMIT=$(git rev-parse --short HEAD)
 
@@ -16,6 +16,6 @@ echo "#!/bin/sh"> dist/publish.sh
 echo "for f in \$(ls ./dist/artifacts) ; do" >> dist/publish.sh
 echo "   hub release edit -m v${VERSION} -a ./dist/artifacts/\${f} v${VERSION}" >> dist/publish.sh
 echo "done" >> dist/publish.sh
-echo "hub release edit -m v${VERSION} -a ./dist/build.log v${VERSION}" >> dist/publish.sh
+echo "hub release edit -m v${VERSION} -a ./dist/build_${ARCH}.log v${VERSION}" >> dist/publish.sh
 
 chmod 755 dist/publish.sh
