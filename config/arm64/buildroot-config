@@ -2818,126 +2818,9 @@ BR2_PACKAGE_HOST_RUSTC_ARCH="aarch64"
 # BR2_PACKAGE_HOST_VBOOT_UTILS is not set
 # BR2_PACKAGE_HOST_XORRISO is not set
 # BR2_PACKAGE_HOST_ZIP is not set
-BR2_LEGACY=y
-
-#
-# Legacy detected: check the content of the menu below
-#
 
 #
 # Legacy config options
-#
-
-#
-# ----------------------------------------------------
-#
-
-#
-# Your old configuration uses legacy options that no  
-#
-
-#
-# longer exist in buildroot, as indicated in the menu 
-#
-
-#
-# below. As long as these options stay selected, or in
-#
-
-#
-# case of string options are non-empty, the build     
-#
-
-#
-# will fail.                                          
-#
-
-#
-# *                                                   
-#
-
-#
-# Where possible, an automatic conversion from old to 
-#
-
-#
-# new symbols has been performed. Before making any   
-#
-
-#
-# change in this legacy menu, make sure to exit the   
-#
-
-#
-# configuration editor a first time and save the      
-#
-
-#
-# configuration. Otherwise, the automatic conversion  
-#
-
-#
-# of symbols will be lost.                            
-#
-
-#
-# *                                                   
-#
-
-#
-# After this initial save, reopen the configuration   
-#
-
-#
-# editor, inspect the options selected below, read    
-#
-
-#
-# their help texts, and verify/update the new         
-#
-
-#
-# configuration in the corresponding configuration    
-#
-
-#
-# menus. When everything is ok, you can disable the   
-#
-
-#
-# legacy options in the menu below. Once you have     
-#
-
-#
-# disabled all legacy options, this text will         
-#
-
-#
-# disappear and you will be able to start the build.  
-#
-
-#
-# *                                                   
-#
-
-#
-# Note: legacy options older than 5 years have been   
-#
-
-#
-# removed, and configuration files that still have    
-#
-
-#
-# those options set, will fail to build, or run in    
-#
-
-#
-# unpredictable ways.                                 
-#
-
-#
-# ----------------------------------------------------
 #
 
 #
@@ -2946,7 +2829,7 @@ BR2_LEGACY=y
 # BR2_KERNEL_HEADERS_3_4 is not set
 # BR2_KERNEL_HEADERS_3_10 is not set
 # BR2_KERNEL_HEADERS_3_12 is not set
-# BR2_BINUTILS_VERSION_2_27_X=y
+# BR2_BINUTILS_VERSION_2_27_X is not set
 # BR2_PACKAGE_EEPROG is not set
 # BR2_PACKAGE_GNUPG2_GPGV2 is not set
 # BR2_PACKAGE_IMX_GPU_VIV_APITRACE is not set
