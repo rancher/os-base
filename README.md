@@ -1,12 +1,12 @@
 # RancherOS Base System
 
-This repo contains the Linux kernel and system programs for RancherOS.  RancherOS is built from [buildroot](http://buildroot.uclibc.org/).
+This repo contains the Linux kernel and system programs for RancherOS.  RancherOS is built from [buildroot](https://buildroot.org/).
 
 ## Building
 
 You need Docker 1.5+
 
-    ./build.sh
+    make
 
 ## Using a custom version of os-base in RancherOS
 
@@ -17,15 +17,15 @@ git clone https://github.com/rancherio/os-base.git
 
 # Build os-base
 cd os-base
-./build.sh
+make
 
-# Copy custom
-cp dist/artifacts/os-base.tar.xz ../os/assets
+# Copy custom to a HTTP website so that you can download it
+# cp dist/artifacts/os-base.tar.xz ...
 
 # Build RancherOS
 cd ../os
-# TODO: argh - this has moved to the Dockerfile.dapper
-sed -i -e 's/^\(download.*os-base.*\)/#\1/' scripts/download
+# Update OS_BASE_URL_amd64 and OS_BASE_URL_arm64 in Dockerfile.dapper
+# Run make
 make
 ```
 ## Contact
@@ -36,7 +36,7 @@ Or just [click here](//github.com/rancher/os/issues/new?title=%5Bos-base%5D%20) 
 
 
 # License
-Copyright (c) 2014-2015 [Rancher Labs, Inc.](http://rancher.com)
+Copyright (c) 2014-2018 [Rancher Labs, Inc.](http://rancher.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
