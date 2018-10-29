@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2018.02 Configuration
+# Buildroot 2018.02.7 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_5=y
@@ -196,7 +196,7 @@ BR2_KERNEL_HEADERS_4_9=y
 # BR2_KERNEL_HEADERS_4_14 is not set
 # BR2_KERNEL_HEADERS_4_15 is not set
 # BR2_KERNEL_HEADERS_VERSION is not set
-BR2_DEFAULT_KERNEL_HEADERS="4.9.86"
+BR2_DEFAULT_KERNEL_HEADERS="4.9.133"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_GLIBC=y
 
@@ -439,7 +439,7 @@ BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 # BR2_PACKAGE_SQUEEZELITE is not set
 
 #
-# tovid needs a toolchain w/ threads, C++, wchar
+# tovid needs a glibc or uclibc toolchain w/ threads, C++, wchar
 #
 
 #
@@ -472,6 +472,7 @@ BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 #
 # Compressors and decompressors
 #
+# BR2_PACKAGE_BROTLI is not set
 # BR2_PACKAGE_BZIP2 is not set
 # BR2_PACKAGE_GZIP is not set
 # BR2_PACKAGE_LZ4 is not set
@@ -845,15 +846,12 @@ BR2_PACKAGE_QT5_JSCORE_AVAILABLE=y
 #
 
 #
-# dahdi-tools needs a toolchain w/ threads
-#
-
-#
-# dahdi-tools needs a Linux kernel to be built
+# dahdi-tools needs a toolchain w/ threads and a Linux kernel to be built
 #
 # BR2_PACKAGE_DBUS is not set
 # BR2_PACKAGE_DEVMEM2 is not set
 # BR2_PACKAGE_DFU_UTIL is not set
+# BR2_PACKAGE_DMIDECODE is not set
 # BR2_PACKAGE_DMRAID is not set
 # BR2_PACKAGE_DT_UTILS is not set
 # BR2_PACKAGE_DTV_SCAN_TABLES is not set
@@ -2190,10 +2188,6 @@ BR2_PACKAGE_DHCPCD=y
 # BR2_PACKAGE_EBTABLES is not set
 
 #
-# ebtables needs a glibc or uClibc toolchain
-#
-
-#
 # ejabberd needs erlang, toolchain w/ C++
 #
 # BR2_PACKAGE_ETHTOOL is not set
@@ -2465,7 +2459,7 @@ BR2_PACKAGE_WPA_SUPPLICANT_PASSPHRASE=y
 #
 
 #
-# znc needs a toolchain w/ C++, dynamic library, gcc >= 4.7
+# znc needs a toolchain w/ C++, dynamic library, gcc >= 4.8, threads
 #
 
 #
@@ -2811,6 +2805,9 @@ BR2_PACKAGE_HOST_PATCHELF=y
 # BR2_PACKAGE_HOST_PWGEN is not set
 # BR2_PACKAGE_HOST_PYTHON_LXML is not set
 # BR2_PACKAGE_HOST_PYTHON_SIX is not set
+BR2_PACKAGE_HOST_QEMU_ARCH_SUPPORTS=y
+BR2_PACKAGE_HOST_QEMU_SYSTEM_ARCH_SUPPORTS=y
+BR2_PACKAGE_HOST_QEMU_USER_ARCH_SUPPORTS=y
 # BR2_PACKAGE_HOST_QEMU is not set
 # BR2_PACKAGE_HOST_RAUC is not set
 BR2_PACKAGE_HOST_RUSTC_ARCH="aarch64"
@@ -2828,6 +2825,7 @@ BR2_PACKAGE_HOST_RUSTC_ARCH="aarch64"
 #
 # Legacy options removed in 2018.02
 #
+# BR2_PACKAGE_TRANSMISSION_REMOTE is not set
 # BR2_KERNEL_HEADERS_3_4 is not set
 # BR2_KERNEL_HEADERS_3_10 is not set
 # BR2_KERNEL_HEADERS_3_12 is not set
