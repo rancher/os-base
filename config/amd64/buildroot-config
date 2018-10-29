@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2018.02 Configuration
+# Buildroot 2018.02.7 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_5=y
@@ -171,7 +171,7 @@ BR2_TOOLCHAIN_BUILDROOT_LIBC="glibc"
 BR2_KERNEL_HEADERS_4_14=y
 # BR2_KERNEL_HEADERS_4_15 is not set
 # BR2_KERNEL_HEADERS_VERSION is not set
-BR2_DEFAULT_KERNEL_HEADERS="4.14.24"
+BR2_DEFAULT_KERNEL_HEADERS="4.14.76"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_GLIBC=y
 
@@ -188,7 +188,7 @@ BR2_BINUTILS_EXTRA_CONFIG_OPTIONS=""
 # GCC Options
 #
 # BR2_GCC_VERSION_4_9_X is not set
-# 2018.02.xBR2_GCC_VERSION_5_X is not set
+# BR2_GCC_VERSION_5_X is not set
 # BR2_GCC_VERSION_6_X is not set
 BR2_GCC_VERSION_7_X=y
 BR2_GCC_ARCH_HAS_CONFIGURABLE_DEFAULTS=y
@@ -269,7 +269,9 @@ BR2_TOOLCHAIN_GCC_AT_LEAST_4_7=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_8=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_9=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_5=y
-BR2_TOOLCHAIN_GCC_AT_LEAST="5"
+BR2_TOOLCHAIN_GCC_AT_LEAST_6=y
+BR2_TOOLCHAIN_GCC_AT_LEAST_7=y
+BR2_TOOLCHAIN_GCC_AT_LEAST="7"
 BR2_TOOLCHAIN_HAS_MNAN_OPTION=y
 BR2_TOOLCHAIN_HAS_SYNC_1=y
 BR2_TOOLCHAIN_HAS_SYNC_2=y
@@ -422,7 +424,7 @@ BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 # BR2_PACKAGE_SQUEEZELITE is not set
 
 #
-# tovid needs a toolchain w/ threads, C++, wchar
+# tovid needs a glibc or uclibc toolchain w/ threads, C++, wchar
 #
 
 #
@@ -455,6 +457,7 @@ BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 #
 # Compressors and decompressors
 #
+# BR2_PACKAGE_BROTLI is not set
 # BR2_PACKAGE_BZIP2 is not set
 # BR2_PACKAGE_GZIP is not set
 # BR2_PACKAGE_LZ4 is not set
@@ -519,6 +522,7 @@ BR2_PACKAGE_KVM_UNIT_TESTS_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LSOF is not set
 BR2_PACKAGE_LTP_TESTSUITE_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LTP_TESTSUITE is not set
+BR2_PACKAGE_LTRACE_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LTRACE is not set
 # BR2_PACKAGE_LTTNG_BABELTRACE is not set
 
@@ -819,7 +823,7 @@ BR2_PACKAGE_QT5_JSCORE_AVAILABLE=y
 # BR2_PACKAGE_XORG7 is not set
 
 #
-# midori needs libgtk3 and a glibc toolchain w/ C++, gcc >= 5, host gcc >= 4.8
+# midori needs libgtk3 and a glibc toolchain w/ C++, gcc >= 6, host gcc >= 4.8
 #
 # BR2_PACKAGE_XKEYBOARD_CONFIG is not set
 
@@ -862,11 +866,7 @@ BR2_PACKAGE_ACPID=y
 #
 
 #
-# dahdi-tools needs a toolchain w/ threads
-#
-
-#
-# dahdi-tools needs a Linux kernel to be built
+# dahdi-tools needs a toolchain w/ threads and a Linux kernel to be built
 #
 # BR2_PACKAGE_DBUS is not set
 # BR2_PACKAGE_DEVMEM2 is not set
@@ -1051,6 +1051,7 @@ BR2_PACKAGE_GAUCHE_ARCH_SUPPORTS=y
 # BR2_PACKAGE_GAUCHE is not set
 # BR2_PACKAGE_GUILE is not set
 # BR2_PACKAGE_HASERL is not set
+BR2_PACKAGE_JAMVM_ARCH_SUPPORTS=y
 # BR2_PACKAGE_JAMVM is not set
 # BR2_PACKAGE_JIMTCL is not set
 # BR2_PACKAGE_LUA is not set
@@ -1204,9 +1205,9 @@ BR2_PACKAGE_BOTAN_ARCH_SUPPORTS=y
 # BR2_PACKAGE_GCR is not set
 # BR2_PACKAGE_GNUTLS is not set
 # BR2_PACKAGE_LIBASSUAN is not set
-# BR2_PACKAGE_LIBGCRYPT is not set
+BR2_PACKAGE_LIBGCRYPT=y
 BR2_PACKAGE_LIBGPG_ERROR_ARCH_SUPPORTS=y
-# BR2_PACKAGE_LIBGPG_ERROR is not set
+BR2_PACKAGE_LIBGPG_ERROR=y
 BR2_PACKAGE_LIBGPG_ERROR_SYSCFG="x86_64-pc-linux-gnu"
 # BR2_PACKAGE_LIBGPGME is not set
 # BR2_PACKAGE_LIBKCAPI is not set
@@ -1444,7 +1445,7 @@ BR2_PACKAGE_JPEG_SIMD_SUPPORT=y
 BR2_PACKAGE_WEBKITGTK_ARCH_SUPPORTS=y
 
 #
-# webkitgtk needs libgtk3 and a glibc toolchain w/ C++, gcc >= 5, host gcc >= 4.8
+# webkitgtk needs libgtk3 and a glibc toolchain w/ C++, gcc >= 6, host gcc >= 4.8
 #
 # BR2_PACKAGE_WEBP is not set
 
@@ -2059,7 +2060,7 @@ BR2_PACKAGE_LIBURCU_ARCH_SUPPORTS=y
 # msgpack needs a toolchain w/ C++
 #
 # BR2_PACKAGE_MTDEV2TUIO is not set
-BR2_PACKAGE_OPENBLAS_DEFAULT_TARGET="SSE_GENERIC"
+BR2_PACKAGE_OPENBLAS_DEFAULT_TARGET="PRESCOTT"
 BR2_PACKAGE_OPENBLAS_ARCH_SUPPORTS=y
 # BR2_PACKAGE_OPENBLAS is not set
 # BR2_PACKAGE_ORC is not set
@@ -2269,10 +2270,6 @@ BR2_PACKAGE_DHCPCD=y
 # BR2_PACKAGE_DRBD_UTILS is not set
 # BR2_PACKAGE_DROPBEAR is not set
 # BR2_PACKAGE_EBTABLES is not set
-
-#
-# ebtables needs a glibc or uClibc toolchain
-#
 
 #
 # ejabberd needs erlang, toolchain w/ C++
@@ -2552,7 +2549,7 @@ BR2_PACKAGE_WPA_SUPPLICANT_PASSPHRASE=y
 #
 
 #
-# znc needs a toolchain w/ C++, dynamic library, gcc >= 4.7
+# znc needs a toolchain w/ C++, dynamic library, gcc >= 4.8, threads
 #
 
 #
@@ -2692,6 +2689,7 @@ BR2_PACKAGE_AUDIT_ARCH_SUPPORTS=y
 # BR2_PACKAGE_DEBIANUTILS is not set
 # BR2_PACKAGE_DOCKER_CONTAINERD is not set
 # BR2_PACKAGE_DOCKER_ENGINE is not set
+# BR2_PACKAGE_DOCKER_PROXY is not set
 # BR2_PACKAGE_EFIBOOTMGR is not set
 BR2_PACKAGE_EFIVAR_ARCH_SUPPORTS=y
 # BR2_PACKAGE_EFIVAR is not set
@@ -2907,6 +2905,9 @@ BR2_PACKAGE_HOST_PATCHELF=y
 # BR2_PACKAGE_HOST_PWGEN is not set
 # BR2_PACKAGE_HOST_PYTHON_LXML is not set
 # BR2_PACKAGE_HOST_PYTHON_SIX is not set
+BR2_PACKAGE_HOST_QEMU_ARCH_SUPPORTS=y
+BR2_PACKAGE_HOST_QEMU_SYSTEM_ARCH_SUPPORTS=y
+BR2_PACKAGE_HOST_QEMU_USER_ARCH_SUPPORTS=y
 # BR2_PACKAGE_HOST_QEMU is not set
 # BR2_PACKAGE_HOST_RAUC is not set
 BR2_PACKAGE_HOST_RUSTC_ARCH_SUPPORTS=y
@@ -2927,6 +2928,7 @@ BR2_PACKAGE_HOST_RUSTC_ARCH="x86_64"
 #
 # Legacy options removed in 2018.02
 #
+# BR2_PACKAGE_TRANSMISSION_REMOTE is not set
 # BR2_KERNEL_HEADERS_3_4 is not set
 # BR2_KERNEL_HEADERS_3_10 is not set
 # BR2_KERNEL_HEADERS_3_12 is not set
