@@ -655,7 +655,7 @@ BR2_PACKAGE_E2FSPROGS_RESIZE2FS=y
 # BR2_PACKAGE_SQUASHFS is not set
 # BR2_PACKAGE_SSHFS is not set
 # BR2_PACKAGE_UNIONFS is not set
-# BR2_PACKAGE_XFSPROGS is not set
+BR2_PACKAGE_XFSPROGS=y
 
 #
 # Fonts, cursors, icons, sounds and themes
