@@ -838,8 +838,8 @@ BR2_PACKAGE_QT5_JSCORE_AVAILABLE=y
 # cc-tool needs a toolchain w/ C++, threads, wchar
 #
 # BR2_PACKAGE_CDRKIT is not set
-# BR2_PACKAGE_CWIID is not set
 BR2_PACKAGE_CRYPTSETUP=y
+# BR2_PACKAGE_CWIID is not set
 
 #
 # dahdi-linux needs a Linux kernel to be built
@@ -2242,8 +2242,6 @@ BR2_PACKAGE_IPROUTE2=y
 # BR2_PACKAGE_IPSEC_TOOLS is not set
 # BR2_PACKAGE_IPSET is not set
 # BR2_PACKAGE_IPTABLES is not set
-# BR2_PACKAGE_IPTABLES_BPF_NFSYNPROXY is not set
-# BR2_PACKAGE_IPTABLES_NFTABLES is not set
 # BR2_PACKAGE_IPTRAF_NG is not set
 # BR2_PACKAGE_IPUTILS is not set
 # BR2_PACKAGE_IRSSI is not set
