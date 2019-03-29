@@ -43,6 +43,12 @@ busybox_install()
         cp package/busybox/$(basename $bbconf) ${target}.$(basename $bbconf)
     fi
 
+    if [ "$build" == "config" ]; then
+        make busybox-menuconfig
+        cp output/build/busybox-*/.config ${target}.$(basename $bbconf)
+    fi
+
+
     if [ "$build" == "build" ]; then
         make
         tar cvJf $target -C output/images .
